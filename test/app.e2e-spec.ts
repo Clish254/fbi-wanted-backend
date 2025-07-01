@@ -16,10 +16,22 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
+  it('/api/wanted (GET) should return wanted persons', async () => {
+    const response = await request(app.getHttpServer())
+      .get('/api/wanted')
+      .expect(200);
+    expect(response.body).toHaveProperty('total');
+    expect(response.body).toHaveProperty('items');
+    expect(Array.isArray(response.body.items)).toBe(true);
+    expect(response.body).toHaveProperty('page');
+    if (response.body.items.length > 0) {
+      const item = response.body.items[0];
+      expect(item).toHaveProperty('uid');
+      expect(item).toHaveProperty('title');
+      expect(item).toHaveProperty('description');
+      expect(item).toHaveProperty('images');
+      expect(item).toHaveProperty('poster_classification');
+      expect(item).toHaveProperty('url');
+    }
   });
 });
