@@ -18,7 +18,7 @@ This backend application acts as a proxy and data transformer for the FBI Wanted
 - **HTTP Client:** Axios (via @nestjs/axios)
 - **Caching:** @nestjs/cache-manager (in-memory by default)
 - **Testing:** Jest, Supertest
-- **Containerization:** Docker (optional)
+- **Containerization:** Docker
 
 ## Setup & Running
 
