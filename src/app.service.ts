@@ -1,6 +1,89 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
+import { ApiProperty } from '@nestjs/swagger';
+
+export class WantedPersonDto {
+  @ApiProperty()
+  uid: string;
+  @ApiProperty()
+  title: string;
+  @ApiProperty()
+  description: string;
+  @ApiProperty({ type: () => [Object] })
+  images: Array<{
+    thumb: string;
+    original: string;
+    large: string;
+    caption: string | null;
+  }>;
+  @ApiProperty({ nullable: true })
+  warning_message: string | null;
+  @ApiProperty({ nullable: true })
+  reward_text: string | null;
+  @ApiProperty({ nullable: true })
+  caution: string | null;
+  @ApiProperty({ nullable: true })
+  details: string | null;
+  @ApiProperty({ type: [String] })
+  field_offices: string[];
+  @ApiProperty({ type: [String] })
+  subjects: string[];
+  @ApiProperty()
+  publication: string;
+  @ApiProperty()
+  url: string;
+  @ApiProperty()
+  poster_classification: string;
+  @ApiProperty({ required: false })
+  hair?: string;
+  @ApiProperty({ required: false })
+  eyes?: string;
+  @ApiProperty({ required: false })
+  race?: string;
+  @ApiProperty({ required: false })
+  sex?: string;
+  @ApiProperty({ required: false })
+  age_min?: number;
+  @ApiProperty({ required: false })
+  age_max?: number;
+  @ApiProperty({ required: false })
+  height_min?: number;
+  @ApiProperty({ required: false })
+  height_max?: number;
+  @ApiProperty({ required: false })
+  weight_min?: number;
+  @ApiProperty({ required: false })
+  weight_max?: number;
+  @ApiProperty({ required: false })
+  scars_and_marks?: string;
+  @ApiProperty({ required: false, type: [String] })
+  aliases?: string[];
+  @ApiProperty({ required: false, type: [String] })
+  occupations?: string[];
+  @ApiProperty({ required: false })
+  nationality?: string;
+  @ApiProperty({ required: false })
+  place_of_birth?: string;
+  @ApiProperty({ required: false, type: [String] })
+  dates_of_birth_used?: string[];
+  @ApiProperty({ required: false })
+  additional_information?: string;
+  @ApiProperty({ required: false, type: [Object] })
+  files?: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+export class ApiResponseDto {
+  @ApiProperty()
+  total: number;
+  @ApiProperty({ type: [WantedPersonDto] })
+  items: WantedPersonDto[];
+  @ApiProperty()
+  page: number;
+}
 
 export interface WantedPerson {
   uid: string;

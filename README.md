@@ -36,7 +36,7 @@ This backend application acts as a proxy and data transformer for the FBI Wanted
    ```bash
    npm run start:dev
    ```
-   The backend will be available at `http://localhost:3000` by default.
+   The backend will be available at `http://localhost:3001` by default.
 
 ### Running with Docker
 1. Build the Docker image:
@@ -45,9 +45,14 @@ This backend application acts as a proxy and data transformer for the FBI Wanted
    ```
 2. Run the container:
    ```bash
-   docker run -p 3000:3000 fbi-wanted-backend
+   docker run -p 3001:3001 fbi-wanted-backend
    ```
-   The backend will be available at `http://localhost:3000` inside the container.
+   The backend will be available at `http://localhost:3001` inside the container.
+
+## API Documentation
+
+- **Swagger UI:** [http://localhost:3001/docs](http://localhost:3001/docs)
+- Interactive API documentation for all endpoints, query parameters, and response schemas.
 
 ## API Endpoints
 
@@ -84,10 +89,4 @@ GET /api/wanted?page=1
 
 ## Testing
 Run all unit and integration tests:
-```bash
-npm test
-npm run test:e2e
 ```
-
-## License
-MIT
